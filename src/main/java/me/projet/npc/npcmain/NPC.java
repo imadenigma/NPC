@@ -16,6 +16,8 @@ import java.util.UUID;
 
 public class NPC {
     private static List<EntityPlayer> NPC = new ArrayList<EntityPlayer>();
+
+
     public static EntityPlayer createNPC(Player player, Player target, String name){
         MinecraftServer server = ((CraftServer) Bukkit.getServer()).getServer();
         WorldServer worldServer = ((CraftWorld) Bukkit.getWorld(player.getWorld().getName())).getHandle();
@@ -37,6 +39,7 @@ public class NPC {
             PlayerConnection connection = ((CraftPlayer)player).getHandle().playerConnection;
             connection.sendPacket(new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER,npc));
             connection.sendPacket(new PacketPlayOutNamedEntitySpawn(npc));
+            connection.sendPacket(new PacketPlayOutEntityTeleport(((CraftPlayer) player).getHandle()));
         }
 
     }
