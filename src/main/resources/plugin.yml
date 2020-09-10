@@ -1,0 +1,9 @@
+name: NPCMain
+version: ${project.version}
+main: me.projet.npc.npcmain.NPCMain
+api-version: 1.16
+commands:
+  createnpc:
+    description: You can create NPC
+  select:
+    description: Select an npc to follow you
